@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 
 function App() {
   const [contact, setContact] = useState({
@@ -9,34 +9,13 @@ function App() {
  }) 
 
     function handleChange(event) {
-
-      const newValue = event.target.value
-      const inputName = event.target.name
-
-      setContact((prevValue)=> {
-          if(inputName === "fName"){
-            return {
-              fName: newValue,
-              lName: prevValue.lName, 
-              email: prevValue.email
-            }
-          }else if (inputName === "lName"){
-              return {
-              fName: prevValue.fName,
-              lName: newValue, 
-              email: prevValue.email
-            }
-
-          } else if (inputName === "email"){
-              return {
-              fName: newValue,
-              lName: prevValue.lName, 
-              email: newValue
-            }
-
-          }
-
-      }) 
+      const {name, value} = event.target
+      
+      setContact(prevValue => {
+        return {
+          ...prevValue,
+          [name]: value 
+        })
 
 
     }
